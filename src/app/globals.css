@@ -91,8 +91,17 @@ a { text-decoration: none; }
 .k-logo-tag { font-size: 8px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--k-mute); display: block; margin-top: 4px; }
 
 /* Photos */
-.photo { background-color: #1c1612; background-size: cover; background-position: center; }
-.fill { position: absolute; inset: 0; }
+.photo {
+  background-color: #1c1612;
+  background-size: cover;
+  background-position: 50% 45% !important;
+  background-repeat: no-repeat;
+}
+
+.fill {
+  position: absolute;
+  inset: 0;
+}
 .overlay-hero { background: linear-gradient(to right, var(--k-ink) 0%, rgba(13,11,10,0.8) 45%, transparent 100%); }
 .fade-bottom { position: absolute; left: 0; right: 0; bottom: 0; height: 96px; background: linear-gradient(to top, var(--k-ink), transparent); }
 
