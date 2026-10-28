@@ -1,0 +1,15 @@
+.userInformation{
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+.headerLabel{
+    font-weight: 600;
+}
+
+.active{
+    background-color: rgb(79, 126, 79);
+    color: white !important;
+}

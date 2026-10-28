@@ -1,0 +1,34 @@
+export function Category(){
+    return [
+        {
+            id:1,
+            name:"Hygiene",
+            icon:"FaPumpSoap"
+        },
+        {
+            id:2,
+            name:"Supplement",
+            icon:"FaPills"
+        },
+        {
+            id:3,
+            name:"Merchandise",
+            icon:"FaShirt"
+        },
+        {
+            id:4,
+            name:"Shakes",
+            icon:"FaBlender"
+        },
+        {
+            id:5,
+            name:"Food",
+            icon:"FaUtensils"
+        },
+        {
+            id:6,
+            name:"Others",
+            icon:"FaLayerGroup"
+        }
+    ]
+}
