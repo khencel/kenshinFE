@@ -28,8 +28,8 @@ export const showConfirmSwal = async ({
             popup: "custom-swal-popup",
             title: "custom-swal-title",
             htmlContainer: "custom-swal-text",
-            confirmButton: "custom-swal-confirm",
-            cancelButton: "custom-swal-cancel",
+            confirmButton: "btnSuccess btn",
+            cancelButton: "btnDefault ms-1",
         },
 
         buttonsStyling: false,

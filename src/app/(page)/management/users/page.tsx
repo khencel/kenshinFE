@@ -81,13 +81,6 @@ export default function UsersPage() {
             return false;
         }
 
-        if (!form.gender) {
-            setToastText("Gender is required.")
-            setToastStatus("error")
-            setShowToast(true)
-            return false;
-        }
-
         if (!form.date_of_birth) {
             setToastText("Date of birth is required.")
             setToastStatus("error")
@@ -325,7 +318,7 @@ export default function UsersPage() {
                 </div>
 
                 <button
-                    className="btnSuccess"
+                    className="btnSuccess btn"
                     onClick={showAddModal}
                 >
                     <FaPlus />

@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
+
 // import { BootstrapClient } from "../bootstrap-client";
 // import Navigation from "../../../components/Navigation";
 import Providers from "./provider"

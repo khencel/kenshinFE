@@ -3,23 +3,40 @@
 import { FormEvent, useState } from "react";
 import { ArrowRight, Calendar, ChevronDown, Clock } from "lucide-react";
 import { BRANCHES } from "@/lib/data";
+import { createRecord } from "@/lib/api/apiEndpoint";
+import { Booking, CreateBooking } from "../types/kenshin/booking";
 
-type Status = "idle" | "sending" | "sent";
+type Status = "idle" | "sending" | "sent" | "error";
 
 export default function BranchesAndReservation() {
-  const [status, setStatus] = useState<Status>("idle");
+    const [status, setStatus] = useState<Status>("idle");
 
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
-    setStatus("sending");
-    // TODO: replace with a real API route / email service
-    console.log("Reservation request:", data);
-    await new Promise((r) => setTimeout(r, 600));
-    setStatus("sent");
-    form.reset();
-  }
+  
+
+    async function onSubmit(e: FormEvent<HTMLFormElement>) {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const data = new FormData(form);
+      setStatus("sending");
+
+      const payload: CreateBooking = {
+        branch_id: Number(data.get("branch_id")),
+        name: String(data.get("name")),
+        contact_no: String(data.get("contact_no")),
+        date_booked: String(data.get("date_booked")),
+        time_booked: String(data.get("time_booked")),
+        no_of_guests: Number(data.get("no_of_guests")),
+      };
+
+      try {
+        await createRecord<Booking, CreateBooking>("booking", payload);
+        setStatus("sent");
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        setStatus("error");
+      }
+    }
 
   return (
     <section id="branches" className="position-relative overflow-hidden bg-ink">
@@ -78,23 +95,24 @@ export default function BranchesAndReservation() {
 
             <form onSubmit={onSubmit} className="row g-3" style={{ maxWidth: 440 }}>
               <div className="col-6">
+                <input  defaultValue={1} name="branch_id" type="hidden"  />
                 <input name="name" required placeholder="Name" className="form-control k-field" />
               </div>
               <div className="col-6">
-                <input name="phone" required type="tel" placeholder="Phone Number" className="form-control k-field" />
+                <input name="contact_no" required type="tel" placeholder="Phone Number" className="form-control k-field" />
               </div>
 
               <div className="col-6 position-relative">
-                <input name="date" required type="date" aria-label="Date" className="form-control k-field" />
-                <Calendar size={14} className="field-icon" />
+                <input name="date_booked" required type="date" aria-label="Date" className="form-control k-field" />
+                {/* <Calendar size={14} className="field-icon" /> */}
               </div>
               <div className="col-6 position-relative">
-                <input name="time" required type="time" aria-label="Time" className="form-control k-field" />
-                <Clock size={14} className="field-icon" />
+                <input name="time_booked" required type="time" aria-label="Time" className="form-control k-field" />
+                {/* <Clock size={14} className="field-icon" /> */}
               </div>
 
               <div className="col-6 position-relative">
-                <select name="guests" required defaultValue="" className="form-select k-field">
+                <select name="no_of_guests" required defaultValue="" className="form-select k-field">
                   <option value="" disabled>
                     Number of Guests
                   </option>
@@ -104,7 +122,7 @@ export default function BranchesAndReservation() {
                     </option>
                   ))}
                 </select>
-                <ChevronDown size={14} className="field-icon" style={{ right: 28 }} />
+                {/* <ChevronDown size={14} className="field-icon" style={{ right: 28 }} /> */}
               </div>
 
               <div className="col-12">

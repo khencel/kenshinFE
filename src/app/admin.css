@@ -398,23 +398,22 @@ input[type="text"], input[type="password"], input[type="email"] {
 
 /* Standard  */
 
+
 .btnSuccess{
-    font-size: 14px;
+    background: #795b40;
+    color: #fff;
+    border: 1px solid #795b40;
     border-radius: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    min-width: 100px;
-    background: linear-gradient(to right, #201073, #11001B);
-    color: white;
+    /* padding: 7px 14px; */
+    font-size: 12px;
+    white-space: nowrap;
+    transition: 0.2s;
 }
 
 .btnSuccess:hover{
-    background: linear-gradient(to right, #11001B, #201073);
-    font-size: 14px;
-    border-radius: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-   
+    background: #63472f;
+    border-color: #63472f;
+    color: white;
 }
 
 .btnDefault{
@@ -436,18 +435,16 @@ input[type="text"], input[type="password"], input[type="email"] {
     color: gray;
 }
 
-.txtStandard{
+.txtStandard {
     width: 100% !important;
     height: 40px !important;
     border-radius: 7px;
     font-size: 13px;
-    
+    border: 1px solid #d9d9d9 !important;
+    border-bottom: 3px solid #8b694b !important;
 }
 
-.txtStandard:focus {
-    border: 2px solid #85C348 !important;
-    outline: none;
-}
+
 
 .txtTextarea{
     width: 100% !important;
@@ -628,6 +625,7 @@ label{
 
 .toast-icon {
     font-size: 22px;
+    color: #63472F !important;
 }
 
 .toast-content {
@@ -661,7 +659,7 @@ label{
 
 /* Success */
 .toast-success {
-    border-left: 4px solid #198754;
+    border-left: 4px solid #63472F;
 }
 
 .toast-success .toast-icon {
@@ -704,5 +702,44 @@ label{
     to {
         opacity: 1;
         transform: translateX(0);
+    }
+}
+
+.logout-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border: 1px solid #63472F;
+    border-radius: 999px;
+    background: transparent;
+    color: #63472F;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+
+.logout-btn:hover:not(:disabled) {
+    background: #63472F;
+    color: #fff;
+}
+
+.logout-btn:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.logout-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* mobile: icon lang */
+@media (max-width: 576px) {
+    .logout-btn {
+        padding: 8px;
+    }
+    .logout-text {
+        display: none;
     }
 }

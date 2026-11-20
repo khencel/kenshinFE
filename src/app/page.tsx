@@ -5,6 +5,7 @@ import Menu from "../../components/Menu";
 import Promo from "../../components/Promo";
 import BranchesAndReservation from "../../components/BranchesAndReservation";
 import Footer from "../../components/Footer";
+import "./landing.css";
 
 export default function Home() {
   return (

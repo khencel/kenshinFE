@@ -72,7 +72,7 @@ export default function CustomToast({
                 className="toast-close"
                 onClick={onClose}
             >
-                <FaTimes />
+                <FaTimes style={{color:"#63472F"}} />
             </button>
         </div>
     );

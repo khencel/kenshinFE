@@ -186,6 +186,23 @@ export default function Sidebar({ open }: { open: boolean }) {
 
                         <div className="submenu">
 
+                            <Link
+                                href="/management/branch"
+                                className={`submenu-item ${
+                                    isSubActive("/management/branch")
+                                        ? "sub-active"
+                                        : ""
+                                }`}
+                            >
+
+                                <span>
+                                    👨‍🎓
+                                </span>
+
+                                Branch
+
+                            </Link>
+
                             {/* STUDENTS */}
                             <Link
                                 href="/management/users"
@@ -218,14 +235,14 @@ export default function Sidebar({ open }: { open: boolean }) {
                                     🏫
                                 </span>
 
-                                Members
+                                Table
 
                             </Link>
 
                             <Link
-                                href="/management/membership"
+                                href="/management/menu"
                                 className={`submenu-item ${
-                                    isSubActive("/management/membership")
+                                    isSubActive("/management/menu")
                                         ? "sub-active"
                                         : ""
                                 }`}
@@ -235,7 +252,7 @@ export default function Sidebar({ open }: { open: boolean }) {
                                     🏫
                                 </span>
 
-                                Membership
+                                Menu
 
                             </Link>
 
@@ -252,7 +269,7 @@ export default function Sidebar({ open }: { open: boolean }) {
                                     🏫
                                 </span>
 
-                                Add-ons
+                                Promotion
 
                             </Link>
                         </div>
@@ -375,7 +392,7 @@ export default function Sidebar({ open }: { open: boolean }) {
 
                 </div> */}
 
-                <Link
+                {/* <Link
                     href="/pos"
                     className={`menu-item ${
                         isActive("/pos")
@@ -392,7 +409,7 @@ export default function Sidebar({ open }: { open: boolean }) {
                         POS
                     </span>
 
-                </Link>
+                </Link> */}
 
                 {/* REPORTS */}
                 <Link
@@ -409,7 +426,7 @@ export default function Sidebar({ open }: { open: boolean }) {
                     </span>
 
                     <span className="sidebar-text">
-                        Reports
+                        Reservations
                     </span>
 
                 </Link>
