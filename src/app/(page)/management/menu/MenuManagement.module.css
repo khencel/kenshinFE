@@ -193,7 +193,7 @@
 /* PRODUCT IMAGE */
 
 .productImage {
-    height: 125px;
+    height: 200px;
     background: linear-gradient(135deg, #d7c0a5, #a9825d);
     border-top: 4px solid #94704e;
     display: flex;
@@ -346,4 +346,29 @@
     .searchBox {
         flex-basis: 100%;
     }
+}
+
+
+.categoryPanel {
+    overflow: visible !important;
+}
+
+.categoryItem {
+    position: relative;
+    overflow: visible !important;
+}
+
+.categoryItem .dropdown {
+    position: relative;
+    z-index: 100;
+}
+
+.categoryItem .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: auto;
+    z-index: 9999;
+    min-width: 150px;
+    margin-top: 5px;
 }

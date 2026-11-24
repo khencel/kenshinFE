@@ -221,6 +221,23 @@ export default function Sidebar({ open }: { open: boolean }) {
 
                             </Link>
 
+                            <Link
+                                href="/management/department"
+                                className={`submenu-item ${
+                                    isSubActive("/management/department")
+                                        ? "sub-active"
+                                        : ""
+                                }`}
+                            >
+
+                                <span>
+                                    🏫
+                                </span>
+
+                                Department
+
+                            </Link>
+
                             {/* CLASSES */}
                             <Link
                                 href="/management/members"
@@ -235,7 +252,7 @@ export default function Sidebar({ open }: { open: boolean }) {
                                     🏫
                                 </span>
 
-                                Table
+                                File
 
                             </Link>
 
@@ -460,7 +477,7 @@ export default function Sidebar({ open }: { open: boolean }) {
 
 
                 {/* LOGS */}
-                <Link
+                {/* <Link
                     href="/logs"
                     className={`menu-item ${
                         isActive("/logs")
@@ -477,7 +494,7 @@ export default function Sidebar({ open }: { open: boolean }) {
                         Activity Logs
                     </span>
 
-                </Link>
+                </Link> */}
 
             </div>
 

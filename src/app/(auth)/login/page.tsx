@@ -43,9 +43,9 @@ export default function AdminLoginPage() {
         path: "/",
       });
 
-      router.push("/admin/dashboard");
+      router.push("/dashboard");
     } catch (err: any) {
-      console.error("Admin login failed:", err);
+      // console.error("Admin login failed:", err);
 
       setError(
         err?.response?.data?.detail ||

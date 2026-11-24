@@ -246,10 +246,9 @@ export default function MenuManagementPage() {
             {/* HEADER */}
             <div className="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
                 <div>
-                    <h2 className={styles.pageTitle}>Items</h2>
+                    <h2 className={styles.pageTitle}>Branch</h2>
                     <p className={styles.pageDescription}>
-                        Changes show on the Sales screen the next time it loads.
-                        Past receipts keep the names and prices they were sold at.
+                        Manage your store branches, locations, and availability across your business.
                     </p>
                 </div>
             </div>

@@ -16,6 +16,7 @@ import Pagination from "../../../../../components/Pagination";
 import { User } from "../../../../../types/user";
 import { getUsers, createUser, updateUser, deleteUser } from "@/lib/api/users";
 import { showConfirmSwal } from "../../../../../components/CustomSwal";
+import { Role } from "@/constants/data";
 
 
 export default function UsersPage() {
@@ -40,8 +41,7 @@ export default function UsersPage() {
         setForm({
             first_name: "",
             last_name: "",
-            gender: "",
-            date_of_birth: "",
+            role:0,
             email: "",
             is_active:false,
             is_admin:false
@@ -52,8 +52,7 @@ export default function UsersPage() {
     const [form, setForm] = useState({
         first_name: "",
         last_name:"",
-        gender:"",
-        date_of_birth:"",
+        role:0,
         email:"",
         is_active:false,
         is_admin:false
@@ -76,13 +75,6 @@ export default function UsersPage() {
 
         if (!form.last_name.trim()) {
             setToastText("Last name is required.")
-            setToastStatus("error")
-            setShowToast(true)
-            return false;
-        }
-
-        if (!form.date_of_birth) {
-            setToastText("Date of birth is required.")
             setToastStatus("error")
             setShowToast(true)
             return false;
@@ -139,8 +131,7 @@ export default function UsersPage() {
             !form.email.trim() ||
             !form.first_name.trim() ||
             !form.last_name.trim() ||
-            !form.gender ||
-            !form.date_of_birth
+            !form.role
         ) {
             alert("Please fill in all required fields.");
             return;
@@ -169,8 +160,7 @@ export default function UsersPage() {
             setForm({
                 first_name: "",
                 last_name: "",
-                gender: "",
-                date_of_birth: "",
+                role:0,
                 email: "",
                 is_active: false,
                 is_admin:false
@@ -195,8 +185,7 @@ export default function UsersPage() {
             first_name: user.first_name,
             last_name: user.last_name,
             email: user.email,
-            gender: user.gender ?? "",
-            date_of_birth: user.date_of_birth ?? "",
+            role: user.role,
             is_active: user.is_active,
             is_admin: user.is_admin
         })
@@ -353,7 +342,7 @@ export default function UsersPage() {
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Email Address</th>
-                                    <th>Admin</th>
+                                    <th>Role</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -406,7 +395,9 @@ export default function UsersPage() {
                                             </td>
 
                                             <td className="text-capitalize">
-                                                {user.is_admin? "Yes":"No"}
+                                                {
+                                                    Role().find(role => role.id === user.role)?.name || "Unknown Role"
+                                                }
                                                 
                                             </td>
 
@@ -433,17 +424,6 @@ export default function UsersPage() {
                                                 >
                                                     <FaRegTrashAlt />
                                                 </button>
-
-                                                <Link href={`users/${user.id}`}>
-                                                <button
-                                                    className="btn btn-sm btn-outline-primary me-2"
-                                                    
-                                                    title="Payment User"
-                                                    
-                                                >
-                                                    <FaCommentDollar />
-                                                </button>
-                                                </Link>
                                             </td>
 
                                         </tr>
@@ -515,6 +495,23 @@ export default function UsersPage() {
                                     required
                                 />
                             </div>
+                            <div className="col-md-6">
+                                <label>User Role:</label>
+                                <select 
+                                    name="role" 
+                                    className="form-control txtStandard"
+                                    value={form.role}
+                                    onChange={handleInputChange}
+                                    required
+                                >
+                                    <option value="" hidden>Select Role</option>
+                                    {
+                                        Role().map((item) => (
+                                            <option key={item.id} value={item.id}>{item.name}</option>
+                                        ))
+                                    }
+                                </select>
+                            </div>
                         </div>
                         <div className="row">
                             <div className="col-md-6">
@@ -539,35 +536,6 @@ export default function UsersPage() {
                                 />
                             </div>
                         </div>
-                    
-                        <div className="row mt-2">
-                            <div className="col-md-6">
-                                <label>Is_admin:</label>
-                                <select name="is_admin"
-                                    className="form-control txtStandard"
-                                    value={String(form.is_admin)}
-                                    onChange={handleInputChange}
-                                    required
-                                >
-                                    <option value="" hidden>Select One</option>
-                                    <option value="true">Yes</option>
-                                    <option value="false">No</option>
-
-                                </select>
-                            </div>
-
-                            <div className="col-md-6">
-                                <label>Date of Birth:</label>
-                                <input type="date" 
-                                    className="form-control txtStandard"
-                                    name="date_of_birth"
-                                    value={form.date_of_birth}
-                                    onChange={handleInputChange}
-                                    required
-                                />
-                            </div>
-                        </div>
-
 
                         <div className="row mt-2">
                             <div className="col-md-6">
@@ -583,6 +551,11 @@ export default function UsersPage() {
                                     <option value="true">Active</option>
                                     <option value="false">Inactive</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div className="row mt-2">
+                            <div className="col">
+                                <span><i>Note:</i><small>The default password for newly created user accounts and password resets is "Kenshin2026". Users are encouraged to change their password upon their first login for security purposes.</small></span>
                             </div>
                         </div>
                     </>
